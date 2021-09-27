@@ -12,27 +12,79 @@
     <SplitView OpenPaneLength="220" DisplayMode="CompactInline" IsPaneOpen="True">
         <SplitView.Pane>
             <RelativePanel Background="#242223">
-                <ListView x:Name="Menu" Loaded="ListView_Loaded" Margin="0 70 0 0">
+                <ListView RelativePanel.Below="BtnMenuFlay" x:Name="Menu" Loaded="ListView_Loaded">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="models:MenuModel">
                             <ListViewItem Tapped="ListViewItem_Tapped">
-                                <Grid Margin="0 20">
+                                <Grid Width="200" Margin="0 20">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="1*"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="1*" />
                                         <ColumnDefinition Width="2*" />
                                     </Grid.ColumnDefinitions>
                                     <Image Grid.Column="0" Margin="10 0 30 0" Source="{x:Bind Icon}" />
-
-                                    <TextBlock FontWeight="SemiBold" Grid.Column="1" Text="{x:Bind Name}" />
+                                    <TextBlock Foreground="#fff" FontWeight="SemiBold" Grid.Column="1" Text="{x:Bind Name}" />
                                 </Grid>
                             </ListViewItem>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                
+                <ListViewItem x:Name="btnHome"  Margin="0 100 0 0">
+                    <Grid  Tapped="Grid_Tapped" Width="200" Padding="0 20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Margin="10 0 30 0" Source="/Assets/button1.png" />
+                        <TextBlock Foreground="#fff" FontWeight="SemiBold" Grid.Column="1" Text="Home" />
+                    </Grid>
+
+                </ListViewItem>
+                <DropDownButton RelativePanel.Below="btnHome" x:Name="BtnMenuFlay" Width="220" BorderThickness="0" Padding="10 20"  Background="Transparent" FontWeight="SemiBold">
+                    <Grid Width="200">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Margin="10 0 30 0" Source="/Assets/button2.png" />
+                        <TextBlock Foreground="#fff" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Text="Eat-in" />
+                    </Grid>
+                    <DropDownButton.Flyout>
+                        <Flyout>
+                            <ListView x:Name="MenuFlyout">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:DataType="models:Category">
+                                        <ListViewItem Tapped="GridViewItem_Tapped">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="1*"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1*" />
+                                                    <ColumnDefinition Width="2*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Image Width="50" Height="50" Grid.Column="0" Margin="10 0 30 0" Source="{x:Bind icon}" />
+                                                <TextBlock VerticalAlignment="Center" Foreground="#fff" FontWeight="SemiBold" Grid.Column="1" Text="{x:Bind name}" />
+                                            </Grid>
+                                        </ListViewItem>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Flyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
             </RelativePanel>
         </SplitView.Pane>
         <SplitView.Content>
@@ -62,8 +114,8 @@
                             <RelativePanel HorizontalAlignment="Center">
                                 <StackPanel>
                                     <Image  Width="80" Height="80" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Assets/StoreLogo.png" />
-                                    <TextBlock  Text="Fast Foods" FontSize="18"  FontWeight="SemiBold" HorizontalAlignment="Center"/>
-                                    <TextBlock Text="Restourents"  FontSize="14" FontWeight="SemiLight" HorizontalAlignment="Center"/>
+                                    <TextBlock Foreground="#fff"  Text="Fast Foods" FontSize="18"  FontWeight="SemiBold" HorizontalAlignment="Center"/>
+                                    <TextBlock Foreground="#fff" Text="Restourents"  FontSize="14" FontWeight="SemiLight" HorizontalAlignment="Center"/>
                                 </StackPanel>
                             </RelativePanel>
                         </Border>

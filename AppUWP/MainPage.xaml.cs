@@ -28,26 +28,25 @@ namespace AppUWP
         public MainPage()
         {
             this.InitializeComponent();
+            _frame = MainFrame;
             MainFrame.Navigate(typeof(Pages.Home));
         }
 
         private void ListView_Loaded(object sender, RoutedEventArgs e)
         {
-            var item = new MenuModel() { Name = "Home", NamePage = "home", Icon = "/Assets/button1.png" };
-            var item2 = new MenuModel() { Name = "Eat-in", NamePage = "eat-in", Icon = "/Assets/button2.png" };
             var item3 = new MenuModel() { Name = "Collection", NamePage = "collection", Icon = "/Assets/button3.png" };
             var item4 = new MenuModel() { Name = "Delivery", NamePage = "delivery", Icon = "/Assets/button4.png" };
             var item5 = new MenuModel() { Name = "Take Away", NamePage = "take-away", Icon = "/Assets/button5.png" };
             var item6 = new MenuModel() { Name = "Driver Payment", NamePage = "driver-payment", Icon = "/Assets/button6.png" };
             var item7 = new MenuModel() { Name = "Customers", NamePage = "customers", Icon = "/Assets/button7.png" };
 
-            Menu.Items.Add(item);
-            Menu.Items.Add(item2);
             Menu.Items.Add(item3);
             Menu.Items.Add(item4);
             Menu.Items.Add(item5);
             Menu.Items.Add(item6);
             Menu.Items.Add(item7);
+
+            RenderCategoryToMenu();
         }
 
         private void ListViewItem_Tapped(object sender, TappedRoutedEventArgs e)
@@ -56,8 +55,31 @@ namespace AppUWP
             switch (selectedItem.NamePage)
             {
                 case "home": MainFrame.Navigate(typeof(Pages.Home), selectedItem); break;
-                case "eat-in": MainFrame.Navigate(typeof(Pages.Eat_in)); break;
             }
+        }
+
+        public async void RenderCategoryToMenu()
+        {
+            Services.CategoryService service = new Services.CategoryService();
+            var CategoryMenu = await service.GetMenu();
+            if (CategoryMenu != null)
+            {
+                MenuFlyout.ItemsSource = CategoryMenu.data;
+            }
+        }
+
+        private void GridViewItem_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Category selectedItem = (Category)MenuFlyout.SelectedItem;
+            switch (selectedItem.namePage)
+            {
+                case "category": MainFrame.Navigate(typeof(Pages.Eat_in), selectedItem); break;
+            }
+        }
+
+        private void Grid_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(Pages.Home));
         }
     }
 }

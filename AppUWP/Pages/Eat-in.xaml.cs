@@ -28,17 +28,26 @@ namespace AppUWP.Pages
             this.InitializeComponent();
         }
 
-        private void Gv_Loaded(object sender, RoutedEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var item = new ProductModel() { Name = "Burger", Image = "/Assets/picture-box-1.jpg", Description = "A hamburger is a food, typically considered a sandwich", Price = "$13" };
-            var item2 = new ProductModel() { Name = "Cake", Image = "/Assets/picture-box-2.jpg", Description = "A cake is a food, typically considered a sandwich.......,,,,,,,", Price = "$23" };
-            var item3 = new ProductModel() { Name = "Pizza", Image = "/Assets/picture-box-3.jpg", Description = "A Pizza is a food, typically considered a sandwich.......,,,,,,,", Price = "$45" };
+            Category category = e.Parameter as Category;
+            RenderFoods(category);
+        }
 
+        public async void RenderFoods(Category category)
+        {
+            Services.CategoryService service = new Services.CategoryService();
+            var CategoryDetail = await service.GetCategoryDetail(category.id.ToString());
+            if (CategoryDetail != null)
+            {
+                Gv.ItemsSource = CategoryDetail.data.foods;
+            }
+        }
 
-            Gv.Items.Add(item);
-            Gv.Items.Add(item2);
-            Gv.Items.Add(item3);
-
+        private void GridViewItem_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Food food = Gv.SelectedItem as Food;
+            MainPage._frame.Navigate(typeof(ProductDetail), food);
         }
     }
 }
