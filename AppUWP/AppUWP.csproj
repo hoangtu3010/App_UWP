@@ -126,6 +126,9 @@
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\MenuModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Pages\Cart.xaml.cs">
+      <DependentUpon>Cart.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Eat-in.xaml.cs">
       <DependentUpon>Eat-in.xaml</DependentUpon>
     </Compile>
@@ -179,6 +182,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Cart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Eat-in.xaml">
       <SubType>Designer</SubType>
