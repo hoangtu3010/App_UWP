@@ -29,17 +29,21 @@ namespace AppUWP
         {
             this.InitializeComponent();
             _frame = MainFrame;
-            MainFrame.Navigate(typeof(Pages.Cart));
+            MainFrame.Navigate(typeof(Pages.ListOrder));
         }
 
         private void ListView_Loaded(object sender, RoutedEventArgs e)
         {
+            var item2 = new MenuModel() { Name = "Cart", NamePage = "cart", Icon = "/Assets/button3.png" };
+            var item1 = new MenuModel() { Name = "Order", NamePage = "order", Icon = "/Assets/button3.png" };
             var item3 = new MenuModel() { Name = "Collection", NamePage = "collection", Icon = "/Assets/button3.png" };
             var item4 = new MenuModel() { Name = "Delivery", NamePage = "delivery", Icon = "/Assets/button4.png" };
             var item5 = new MenuModel() { Name = "Take Away", NamePage = "take-away", Icon = "/Assets/button5.png" };
             var item6 = new MenuModel() { Name = "Driver Payment", NamePage = "driver-payment", Icon = "/Assets/button6.png" };
             var item7 = new MenuModel() { Name = "Customers", NamePage = "customers", Icon = "/Assets/button7.png" };
 
+            Menu.Items.Add(item2);
+            Menu.Items.Add(item1);
             Menu.Items.Add(item3);
             Menu.Items.Add(item4);
             Menu.Items.Add(item5);
@@ -55,6 +59,8 @@ namespace AppUWP
             switch (selectedItem.NamePage)
             {
                 case "home": MainFrame.Navigate(typeof(Pages.Home), selectedItem); break;
+                case "cart": MainFrame.Navigate(typeof(Pages.Cart), selectedItem); break;
+                case "order": MainFrame.Navigate(typeof(Pages.ListOrder), selectedItem); break;
             }
         }
 

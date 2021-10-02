@@ -32,7 +32,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <ListViewItem x:Name="btnHome"  Margin="0 100 0 0">
+                <ListViewItem x:Name="btnHome"  Margin="0 60 0 0">
                     <Grid  Tapped="Grid_Tapped" Width="200" Padding="0 20">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>

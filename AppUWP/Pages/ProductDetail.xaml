@@ -24,7 +24,7 @@
                 <TextBlock x:Name="Name" Text="" FontSize="40" FontWeight="SemiBold" TextWrapping="Wrap"/>
                 <TextBlock x:Name="SubTitle" Text="With Onions and tamato and ketchup" FontSize="18" TextWrapping="Wrap"/>
                 <TextBlock x:Name="Description" Text="simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book." FontSize="16" Margin="0 15" TextWrapping="Wrap"/>
-                <Button x:Name="buttonOrder" Background="#beac02" FontWeight="SemiBold" Margin="0 10" Padding="100 5" FontSize="15">Order Now</Button>
+                <Button x:Name="buttonOrder" Click="buttonOrder_Click" Background="#beac02" FontWeight="SemiBold" Margin="0 10" Padding="100 5" FontSize="15">Order Now</Button>
             </StackPanel>
         </StackPanel>
 

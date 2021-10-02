@@ -12,9 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Windows.UI.Xaml.Media.Imaging;
 using AppUWP.Models;
-using AppUWP.Services;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -23,36 +21,29 @@ namespace AppUWP.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ProductDetail : Page
+    public sealed partial class ListOrder : Page
     {
-        public ProductDetail()
+        public ListOrder()
         {
             this.InitializeComponent();
         }
 
-        private Food food;
-
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            food = e.Parameter as Food;
-            Price.Text = food.price.ToString() + " VND";
-            Name.Text = food.name;
-            //Description.Text = food.description;
-            ImageProduct.UriSource = new Uri(food.image);
+            RenderHistoryPaid();
         }
 
-        private void buttonOrder_Click(object sender, RoutedEventArgs e)
+        public void RenderHistoryPaid()
         {
-            CartService cart = new CartService();
-            CartItem item = new CartItem()
-            {
-                Id = food.id,
-                Name = food.name,
-                Image = food.image,
-                Price = food.price,
-                Qty = 1
-            };
-            cart.AddToCart(item);
+            Services.OrderService order = new Services.OrderService();
+            var list = order.GetList();
+            List.ItemsSource = list;
+        }
+
+        private void ListViewItem_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            CustomerModel order = List.SelectedItem as CustomerModel;
+            MainPage._frame.Navigate(typeof(Pages.OrderProduct), order);
         }
     }
 }

@@ -10,7 +10,13 @@
     Background="#fff">
 
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 70">
-        <GridView x:Name="Gv">
+        <Canvas Margin="0 20 0 40">
+            <Button Click="Back" Foreground="#333">
+                <FontIcon  VerticalAlignment="Center" FontFamily="Segoe MDL2 Assets" Glyph="&#xe830;"/>
+            </Button>
+            <TextBlock x:Name="CategoryName" Foreground="#333" Margin="40 0 0 0" Text=""  FontSize="20" FontWeight="SemiBold" />
+        </Canvas>
+        <GridView x:Name="Gv" Margin="0 60 0 0">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="models:Food">
                     <GridViewItem Tapped="GridViewItem_Tapped">

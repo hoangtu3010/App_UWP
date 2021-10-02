@@ -1,9 +1,9 @@
-﻿using System;
+﻿using AppUWP.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using AppUWP.Models;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -21,39 +21,32 @@ namespace AppUWP.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Eat_in : Page
+    public sealed partial class OrderProduct : Page
     {
-        public Eat_in()
+        public OrderProduct()
         {
             this.InitializeComponent();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            Category category = e.Parameter as Category;
-            CategoryName.Text = category.name;
-            RenderFoods(category);
+            CustomerModel orderItem = e.Parameter as CustomerModel;
+            RenderOrder(orderItem);
         }
 
-        public async void RenderFoods(Category category)
+        public async void RenderOrder(CustomerModel order)
         {
-            Services.CategoryService service = new Services.CategoryService();
-            var CategoryDetail = await service.GetCategoryDetail(category.id.ToString());
-            if (CategoryDetail != null)
+            Services.OrderDetailService service = new Services.OrderDetailService();
+            var OrderProduct = await service.GetOrderDetail(order.OrderId.ToString());
+            if(OrderProduct != null)
             {
-                Gv.ItemsSource = CategoryDetail.data.foods;
+                ListOrderProduct.ItemsSource = OrderProduct.data;
             }
-        }
-
-        private void GridViewItem_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            Food food = Gv.SelectedItem as Food;
-            MainPage._frame.Navigate(typeof(ProductDetail), food);
         }
 
         private void Back(object sender, RoutedEventArgs e)
         {
-            MainPage._frame.Navigate(typeof(Pages.Home));
+            MainPage._frame.Navigate(typeof(Pages.ListOrder));
         }
     }
 }
