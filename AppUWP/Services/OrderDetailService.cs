@@ -12,7 +12,7 @@ namespace AppUWP.Services
 {
     class OrderDetailService
     {
-        public async Task<Models.CreateOrder> GetOrderDetail(string id)
+        public async Task<Models.RootOrder> GetOrderDetail(string id)
         {
             FoodGroup api = FoodGroup.GetInstance();
             HttpClient hc = new HttpClient();
@@ -20,7 +20,7 @@ namespace AppUWP.Services
             if(rs.StatusCode == HttpStatusCode.OK)
             {
                 var stringContent = await rs.Content.ReadAsStringAsync(); // chuyen thanh string json
-                Models.CreateOrder orderDetail = JsonConvert.DeserializeObject<Models.CreateOrder>(stringContent); // Convert string json thanh 1 object DTO ( categories )
+                Models.RootOrder orderDetail = JsonConvert.DeserializeObject<Models.RootOrder>(stringContent); // Convert string json thanh 1 object DTO ( categories )
                 return orderDetail;
             }
             return null;

@@ -23,10 +23,7 @@ namespace AppUWP.Models
         public string description { get; set; }
         public string price { get; set; }
 
-        public BitmapImage Img
-        {
-            get => new BitmapImage(new Uri(image));
-        }
+     
     }
 
     public class Products

@@ -33,12 +33,14 @@
                                         <ColumnDefinition Width="auto" />
                                         <ColumnDefinition Width="2*" />
                                         <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="auto" />
                                     </Grid.ColumnDefinitions>
                                     <TextBlock  Foreground="#333" VerticalAlignment="Center" Grid.Column="0" Text="{x:Bind Id}" FontWeight="SemiBold" FontSize="16" TextWrapping="Wrap" />
                                     <TextBlock Margin="20 0" Foreground="#333" VerticalAlignment="Center" Grid.Column="1" Text="{x:Bind Name}" FontWeight="SemiBold" FontSize="16" TextWrapping="Wrap" />
                                     <TextBlock Margin="20 0" Foreground="#333" Grid.Column="2" Text="{x:Bind Tel}" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
                                     <TextBlock Margin="40 0" Foreground="#333" Grid.Column="3" Text="{x:Bind Address}" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
                                     <TextBlock Margin="20 0" Foreground="#333" Grid.Column="4" Text="{x:Bind OrderId}" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
+                                    <TextBlock Margin="20 0" Foreground="#333" Grid.Column="5" Text="{x:Bind DateCheckOut}" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
                                 </Grid>
                             </ListViewItem>
                         </DataTemplate>

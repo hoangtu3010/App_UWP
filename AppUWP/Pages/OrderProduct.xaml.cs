@@ -36,12 +36,19 @@ namespace AppUWP.Pages
 
         public async void RenderOrder(CustomerModel order)
         {
+            var grandTotal = 0;
             Services.OrderDetailService service = new Services.OrderDetailService();
             var OrderProduct = await service.GetOrderDetail(order.OrderId.ToString());
             if(OrderProduct != null)
             {
-                ListOrderProduct.ItemsSource = OrderProduct.data;
+                ListOrderProduct.ItemsSource = OrderProduct.data.items;
+                foreach (ItemOrder cartItem in OrderProduct.data.items)
+                {
+                    grandTotal += cartItem.Total;
+                }
+                GrandTotal.Text = "Grand Total: " + grandTotal.ToString() + " VND";
             }
+
         }
 
         private void Back(object sender, RoutedEventArgs e)

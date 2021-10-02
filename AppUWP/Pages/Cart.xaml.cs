@@ -90,7 +90,8 @@ namespace AppUWP.Pages
                 Name = CusName.Text,
                 Tel = CusTel.Text,
                 Address = CusAddress.Text,
-                OrderId = order.data.order_id
+                OrderId = order.data.order_id,
+                DateCheckOut = DateTime.Now
             };
             orderService.SaveCustomerOrderId(customer);
 

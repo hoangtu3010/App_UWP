@@ -22,7 +22,8 @@ namespace AppUWP.Services
             HttpClient httpClient = new HttpClient();
             Uri uri = new Uri(fg.ApiCreateOrder);
             HttpStringContent content = new HttpStringContent(
-                    "items: " + JsonConvert.SerializeObject(items),
+                    "{ \"items\" :" +
+                    JsonConvert.SerializeObject(items)+"}",
                     UnicodeEncoding.Utf8,
                     "application/json"
                 );
@@ -42,12 +43,13 @@ namespace AppUWP.Services
             try
             {
                 SQLiteConnection connection = SQLiteHelper.GetInstance()._sQLiteConnection;
-                string sql_txt = "insert into Customer_Order(Name,Tel,Address,OrderId) values(?,?,?,?)";
+                string sql_txt = "insert into Customer_Order(Name,Tel,Address,OrderId,DateCheckOut) values(?,?,?,?,?)";
                 var statement = connection.Prepare(sql_txt);
                 statement.Bind(1, customer.Name);
                 statement.Bind(2, customer.Tel);
                 statement.Bind(3, customer.Address);
                 statement.Bind(4, customer.OrderId);
+                statement.Bind(5, customer.DateCheckOut.ToString());
                 var rs = statement.Step();
                 return rs == SQLiteResult.OK;
             }
@@ -75,6 +77,7 @@ namespace AppUWP.Services
                         Tel = statement[2] as string,
                         Address = statement[3] as string,
                         OrderId = Convert.ToInt32(statement[4]),
+                        DateCheckOut =Convert.ToDateTime( statement[5]),
                     };
                     list.Add(item);
                 }

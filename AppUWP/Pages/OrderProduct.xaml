@@ -21,7 +21,7 @@
             <ScrollViewer Height="350">
                 <ListView x:Name="ListOrderProduct">
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="models:CartItem">
+                        <DataTemplate x:DataType="models:ItemOrder">
                             <ListViewItem FocusVisualPrimaryBrush="Transparent" FocusVisualSecondaryThickness="0" BorderThickness="0 0 0 1"  BorderBrush="#ddd" >
                                 <Grid Margin="0 0 0 10"  Padding="0 15">
                                     <Grid.RowDefinitions>
@@ -32,7 +32,6 @@
                                         <ColumnDefinition Width="2*" />
                                         <ColumnDefinition Width="auto" />
                                         <ColumnDefinition Width="auto" />
-                                        <ColumnDefinition Width="auto" />
                                     </Grid.ColumnDefinitions>
                                     <Ellipse Grid.Column="0" Width="80" Height="80">
                                         <Ellipse.Fill>
@@ -41,12 +40,10 @@
                                     </Ellipse>
                                     <TextBlock Foreground="#333" Margin="10 0" VerticalAlignment="Center" Grid.Column="1" Text="{x:Bind Name}" FontWeight="SemiBold" FontSize="16" TextWrapping="Wrap" />
                                     <RelativePanel Margin="20 0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <TextBox  x:Name="CartProductAmount" Padding="0 5 0 0" CornerRadius="5" TextAlignment="Center" Foreground="#333" Background="Transparent"  BorderThickness="1" BorderBrush="#ddd" Text="{x:Bind Qty}" TextWrapping="Wrap"/>
+                                        <TextBox  x:Name="CartProductAmount" Padding="0 5 0 0" CornerRadius="5" TextAlignment="Center" Foreground="#333" Background="Transparent" IsReadOnly="True"  BorderThickness="1" BorderBrush="#ddd" Text="{x:Bind Qty}" TextWrapping="Wrap"/>
                                     </RelativePanel>
                                     <TextBlock Margin="10 0" Foreground="#333" Grid.Column="3" Text="{x:Bind Total}" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
-                                    <Button HorizontalAlignment="Center" CornerRadius="5" Grid.Column="4" Background="Transparent" Foreground="#333">
-                                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE74d;"/>
-                                    </Button>
+                                    
                                 </Grid>
 
                             </ListViewItem>
