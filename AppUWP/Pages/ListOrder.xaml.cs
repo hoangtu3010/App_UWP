@@ -45,5 +45,10 @@ namespace AppUWP.Pages
             CustomerModel order = List.SelectedItem as CustomerModel;
             MainPage._frame.Navigate(typeof(Pages.OrderProduct), order);
         }
+
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            MainPage._frame.Navigate(typeof(Pages.Home));
+        }
     }
 }

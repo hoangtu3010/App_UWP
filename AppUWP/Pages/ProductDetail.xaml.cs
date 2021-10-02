@@ -54,5 +54,10 @@ namespace AppUWP.Pages
             };
             cart.AddToCart(item);
         }
+
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            MainPage._frame.GoBack();
+        }
     }
 }
