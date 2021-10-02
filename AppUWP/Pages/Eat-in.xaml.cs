@@ -55,5 +55,15 @@ namespace AppUWP.Pages
         {
             MainPage._frame.Navigate(typeof(Pages.Home));
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainPage._frame.Navigate(typeof(Home));
+        }
+
+        private void AddFavorite_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

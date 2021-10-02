@@ -29,7 +29,7 @@ namespace AppUWP
         {
             this.InitializeComponent();
             _frame = MainFrame;
-            MainFrame.Navigate(typeof(Pages.ListOrder));
+            MainFrame.Navigate(typeof(Pages.Home));
         }
 
         private void ListView_Loaded(object sender, RoutedEventArgs e)

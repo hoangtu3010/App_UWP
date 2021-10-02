@@ -18,7 +18,7 @@
                 </Button>
                 <TextBlock Foreground="#333" Margin="40 0 0 0" Text="Order Detail"  FontSize="20" FontWeight="SemiBold" />
             </Canvas>
-            <ScrollViewer Height="200">
+            <ScrollViewer Height="250">
                 <ListView x:Name="ListOrderProduct">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="models:ItemOrder">

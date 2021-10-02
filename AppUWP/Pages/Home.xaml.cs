@@ -50,5 +50,15 @@ namespace AppUWP.Pages
             Food food = Gv.SelectedItem as Food;
             MainPage._frame.Navigate(typeof(Pages.ProductDetail), food);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainPage._frame.Navigate(typeof(Pages.Home));
+        }
+
+        private void AddFavorite_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
