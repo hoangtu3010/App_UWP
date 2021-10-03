@@ -34,9 +34,9 @@ namespace AppUWP
 
         private void ListView_Loaded(object sender, RoutedEventArgs e)
         {
-            var item2 = new MenuModel() { Name = "Cart", NamePage = "cart", Icon = "/Assets/button3.png" };
-            var item1 = new MenuModel() { Name = "Order", NamePage = "order", Icon = "/Assets/button3.png" };
-            var item3 = new MenuModel() { Name = "Favorite", NamePage = "favorite", Icon = "/Assets/button3.png" };
+            var item2 = new MenuModel() { Name = "Cart", NamePage = "cart", Icon = "/Assets/icon-cart-menu.png" };
+            var item1 = new MenuModel() { Name = "Order", NamePage = "order", Icon = "/Assets/icon-bill-menu.png" };
+            var item3 = new MenuModel() { Name = "Favorite", NamePage = "favorite", Icon = "/Assets/icon-heart.png" };
             var item4 = new MenuModel() { Name = "Delivery", NamePage = "delivery", Icon = "/Assets/button4.png" };
             var item5 = new MenuModel() { Name = "Take Away", NamePage = "take-away", Icon = "/Assets/button5.png" };
             var item6 = new MenuModel() { Name = "Driver Payment", NamePage = "driver-payment", Icon = "/Assets/button6.png" };

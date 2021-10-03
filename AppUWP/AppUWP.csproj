@@ -179,6 +179,9 @@
     <Content Include="Assets\button7.png" />
     <Content Include="Assets\button8.png" />
     <Content Include="Assets\button9.png" />
+    <Content Include="Assets\icon-bill-menu.png" />
+    <Content Include="Assets\icon-cart-menu.png" />
+    <Content Include="Assets\icon-heart.png" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\picture-box-1.jpg" />
     <Content Include="Assets\picture-box-2.jpg" />

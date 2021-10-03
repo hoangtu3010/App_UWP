@@ -6,9 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models="using:AppUWP.Models"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Foreground="#333"
+    Background="#fff">
 
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 70">
+    <Grid Padding="40 0" Margin="0 0 0 70">
         <Canvas Margin="0 20 0 40">
             <Button x:Name="Back" Click="Back_Click" Background="#fff" Foreground="#333">
                 <FontIcon  VerticalAlignment="Center" FontFamily="Segoe MDL2 Assets" Glyph="&#xe830;"/>
