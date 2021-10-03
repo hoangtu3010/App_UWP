@@ -31,6 +31,9 @@ namespace AppUWP.Adapters
             var sql_txt_order = @"create table if not exists Customer_Order(Id integer primary key, Name varchar(255), Tel char(20), Address text, OrderId integer,DateCheckOut datetime)";
             var statement_order = _sQLiteConnection.Prepare(sql_txt_order);
             statement_order.Step();
+            var sql_favorite = @"create table if not exists Favorite(Id integer primary key,itemId integer)";
+            var statement_favorite = _sQLiteConnection.Prepare(sql_favorite);
+            statement_favorite.Step();
             
         }
 

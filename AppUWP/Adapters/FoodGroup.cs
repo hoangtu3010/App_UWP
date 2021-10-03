@@ -40,6 +40,10 @@ namespace AppUWP.Adapters
         {
             return string.Format(baseUrl + "/api/category/" + id);
         }
+        public string FoodDetail(string id)
+        {
+            return string.Format(baseUrl + "/api/food/" + id);
+        }
 
         public string ApiCreateOrder
         {

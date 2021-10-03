@@ -36,7 +36,7 @@ namespace AppUWP
         {
             var item2 = new MenuModel() { Name = "Cart", NamePage = "cart", Icon = "/Assets/button3.png" };
             var item1 = new MenuModel() { Name = "Order", NamePage = "order", Icon = "/Assets/button3.png" };
-            var item3 = new MenuModel() { Name = "Collection", NamePage = "collection", Icon = "/Assets/button3.png" };
+            var item3 = new MenuModel() { Name = "Favorite", NamePage = "favorite", Icon = "/Assets/button3.png" };
             var item4 = new MenuModel() { Name = "Delivery", NamePage = "delivery", Icon = "/Assets/button4.png" };
             var item5 = new MenuModel() { Name = "Take Away", NamePage = "take-away", Icon = "/Assets/button5.png" };
             var item6 = new MenuModel() { Name = "Driver Payment", NamePage = "driver-payment", Icon = "/Assets/button6.png" };
@@ -61,6 +61,7 @@ namespace AppUWP
                 case "home": MainFrame.Navigate(typeof(Pages.Home), selectedItem); break;
                 case "cart": MainFrame.Navigate(typeof(Pages.Cart), selectedItem); break;
                 case "order": MainFrame.Navigate(typeof(Pages.ListOrder), selectedItem); break;
+                case "favorite": MainFrame.Navigate(typeof(Pages.FavoriteList)); break;
             }
         }
 

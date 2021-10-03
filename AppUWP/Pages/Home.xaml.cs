@@ -31,34 +31,59 @@ namespace AppUWP.Pages
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            Food food = e.Parameter as Food;
-            RenderProduct(food);
+            RenderProduct();
         }
 
-        public async void RenderProduct(Food food)
+        public async void RenderProduct()
         {
             Services.HomeSevice service = new Services.HomeSevice();
             var products = await service.getProduct();
+            Services.FavoriteSevice favorite = new Services.FavoriteSevice();
+            var favorites = favorite.GetFavoriteList();
             if (products != null)
             {
+                foreach (Food food in products.data)
+                {
+                    food.icon = "\uEB51";
+                }
+
+                foreach (Food food in products.data)
+                {
+                    foreach (FavoriteItem Fitem in favorites)
+                    {
+                        if (food.id == Fitem.itemId)
+                        {
+                            food.icon = "\uEB52";
+                        }
+                    }
+                }
                 Gv.ItemsSource = products.data;
+
             }
         }
 
         private void GridViewItem_Tapped(object sender, TappedRoutedEventArgs e)
         {
             Food food = Gv.SelectedItem as Food;
-            MainPage._frame.Navigate(typeof(Pages.ProductDetail), food);
+            Food item = (sender as GridViewItem).DataContext as Food;
+
+            MainPage._frame.Navigate(typeof(Pages.ProductDetail), item);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MainPage._frame.Navigate(typeof(Pages.Home));
+            Food item = (sender as Button).DataContext as Food;
+
+            MainPage._frame.Navigate(typeof(Pages.ProductDetail), item);
+
         }
 
         private void AddFavorite_Click(object sender, RoutedEventArgs e)
         {
-
+            Services.FavoriteSevice favorite = new Services.FavoriteSevice();
+            Food item = (sender as Button).DataContext as Food;
+            favorite.CheckFavoriteList(item);
+            RenderProduct();
         }
     }
 }

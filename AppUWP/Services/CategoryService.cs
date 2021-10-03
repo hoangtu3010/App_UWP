@@ -38,5 +38,18 @@ namespace AppUWP.Services
             }
             return null;
         }
+        public async Task<Models.Products> GetFoodDetail(string id)
+        {
+            Adapters.FoodGroup api = Adapters.FoodGroup.GetInstance();
+            HttpClient hc = new HttpClient();
+            var rs = await hc.GetAsync(api.FoodDetail(id));
+            if (rs.StatusCode == HttpStatusCode.OK)
+            {
+                var stringContent = await rs.Content.ReadAsStringAsync(); // chuyen thanh string json
+                Models.Products products = JsonConvert.DeserializeObject<Models.Products>(stringContent); // Convert string json thanh 1 object DTO ( categories )
+                return products;
+            }
+            return null;
+        }
     }
 }

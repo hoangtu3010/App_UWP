@@ -15,20 +15,11 @@ namespace AppUWP.Models
     //    public string Price { get; set; }
     //}
 
-    public class Product
-    {
-        public int id { get; set; }
-        public string name { get; set; }
-        public string image { get; set; }
-        public string description { get; set; }
-        public string price { get; set; }
 
-     
-    }
 
     public class Products
     {
         public string message { get; set; }
-        public List<Product> data { get; set; }
+        public Food data { get; set; }
     }
 }
